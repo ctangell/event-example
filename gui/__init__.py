@@ -1,0 +1,1 @@
+# Copyright LGPL by Christopher Angell
