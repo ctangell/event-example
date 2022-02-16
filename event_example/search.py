@@ -25,7 +25,7 @@ class SearchWindow:
         self._listbox.grid(column=0, row=1, columnspan=3, sticky='nwes')
         self._listbox.bind('<<ListboxSelect>>', self.fetch)
 
-        eventbus.handle(SearchResultEvent, self.receive)
+        eventbus.connect(SearchResultEvent, self.receive)
 
     def submit(self, *args):
         self._eventbus.emit(SearchEvent(self._query.get()))

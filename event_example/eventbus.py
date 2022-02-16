@@ -39,7 +39,7 @@ class EventBus:
         for handler in self._async_handlers[type(event)]:
             self._pool.submit(handler, event)
 
-    def handle(self, eventcls, fn, is_async=False):
+    def connect(self, eventcls, fn, is_async=False):
         if is_async:
             self._async_handlers[eventcls].append(fn)
         else:

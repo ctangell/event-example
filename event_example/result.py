@@ -27,7 +27,7 @@ class ResultWindow:
         errorlabel = ttk.Label(t, textvariable=self._error)
         errorlabel.grid(column=0, row=4, columnspan=2)
 
-        eventbus.handle(FetchResultEvent, self.receive)
+        eventbus.connect(FetchResultEvent, self.receive)
 
     def receive(self, event):
         self._name.set(event.data.name)

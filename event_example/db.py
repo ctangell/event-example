@@ -20,9 +20,9 @@ class Db:
             "granola": Item("granola", "brown", 3),
         }
         self._eventbus = eventbus
-        eventbus.handle(SearchEvent, self.search, is_async=True)
-        eventbus.handle(FetchEvent, self.fetch, is_async=True)
-        eventbus.handle(UpdateEvent, self.update, is_async=True)
+        eventbus.connect(SearchEvent, self.search, is_async=True)
+        eventbus.connect(FetchEvent, self.fetch, is_async=True)
+        eventbus.connect(UpdateEvent, self.update, is_async=True)
 
     def search(self, event):
         sleep(2) # simulate long search time that would block the event loop
