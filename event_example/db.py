@@ -12,6 +12,9 @@ from .events import (
 Item = namedtuple("Item", ["name", "color", "quantity"])
 
 class Db:
+    """ Simple database simulating a key-value store. Listens and responds to
+    events for searching, fetching, and updating.
+    """
 
     def __init__(self, eventbus):
         # simulate a key-value store
@@ -21,7 +24,9 @@ class Db:
             "yogurt": Item("yogurt", "white", 1),
             "granola": Item("granola", "brown", 3),
         }
+        # keep a reference to the event bus so that events can be emitted
         self._eventbus = eventbus
+        # connect the methods to the given events
         eventbus.connect(SearchEvent, self.search, is_async=True)
         eventbus.connect(FetchEvent, self.fetch, is_async=True)
         eventbus.connect(UpdateEvent, self.update, is_async=True)
@@ -44,6 +49,8 @@ class Db:
 
     def update(self, event):
         sleep(2) # simulate long update time that would block the event loop
+        # construct an item assuming the data is a tuple in-order
         item = Item(*event.data)
+        # update the item in the database
         self._db[item.name] = item
     

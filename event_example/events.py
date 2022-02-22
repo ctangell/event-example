@@ -4,6 +4,7 @@
 
 from collections import namedtuple
 
+# use a tuple to provide boilerplate for instantiation
 Event = namedtuple("Event", ["data"])
 
 class SearchEvent(Event):
