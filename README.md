@@ -22,9 +22,11 @@ Library components used:
 * namedtuple - as a convenient data structure that provides instantiation and
   other boilerplate
 
-This example is loosely inspired by the
-[encore.events package]()
+This event bus in this example is loosely based on the
+[encore.events package](http://docs.enthought.com/encore/events/index.html)
 which provides a Python event bus, minus the asynchronous nature.
+The need for an asynchronous component inside the event bus motivated this
+example.
 
 ## How to run
 
